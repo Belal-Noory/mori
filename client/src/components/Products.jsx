@@ -14,6 +14,14 @@ const Container = styled.div`
     justify-content: space-between;
 `;
 
+const EmptyContainer = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    font-size:2rem;
+`;
+
 const Products = () => {
   const [Products, setProducts] = useState([]);
   const [catagories, setCatagories] = useState([]);
@@ -42,7 +50,8 @@ const Products = () => {
 
   return (
     <>
-      <Container>
+      {Products.length > 0?
+      (<><Container>
         <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
           <InputLabel id="demo-select-small">کتگوری</InputLabel>
           <Select
@@ -72,7 +81,7 @@ const Products = () => {
             <Product item={item} key={item._id} />
           ))
         }
-      </Container>
+      </Container></>):<EmptyContainer>لیست محصولات خالی است لطفآ محصولات را اضعفافه نمایند</EmptyContainer>}
     </>
   );
 };
